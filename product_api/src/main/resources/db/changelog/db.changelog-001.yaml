@@ -1,0 +1,184 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-extension-uuid-ossp
+      author: julia
+      changes:
+        - sql: 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp";'
+  - changeSet:
+      id: create-extension-pg_trgm
+      author: julia
+      changes:
+        - sql: "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
+  - changeSet:
+      id: create-extension-fuzzystrmatch
+      author: julia
+      changes:
+        - sql: "CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;"
+  - changeSet:
+      id: create-table-products
+      author: julia
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            - tableExists:
+                tableName: products
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  defaultValueComputed: "uuid_generate_v4()"
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: category
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: image_url
+                  type: VARCHAR(255)
+            tableName: products
+  # - changeSet:
+  #     id: add-products-1
+  #     author: julia
+  #     changes:
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 1"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 2"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 3"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 4"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 5"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 6"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 7"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 8"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 9"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 10"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 11"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 12"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 13"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 14"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 15"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 16"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 17"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 18"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 19"
+  #       - insert:
+  #           tableName: test_table
+  #           columns:
+  #             - column:
+  #                 name: name
+  #                 value: "Test 20"

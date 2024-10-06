@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    default: "dev"
+  application:
+    name: products
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/products
+    user: admin123
+    password: admin123
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/products
+    username: admin123
+    password: admin123
+  testcontainers:
+    reuse.enable: true
+---
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+  application:
+    name: products
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/products
+    user: admin123
+    password: admin123
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/products
+    username: admin123
+    password: admin123
+  devtools:
+    livereload:
+      enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  liquibase:
+    enabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "test"
+
+

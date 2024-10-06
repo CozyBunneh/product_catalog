@@ -1,0 +1,32 @@
+#
+# Build
+#
+FROM ghcr.io/graalvm/graalvm-community:22 AS builder
+
+WORKDIR /app
+
+COPY gradlew .
+COPY gradle gradle
+COPY build.gradle .
+COPY gradle.properties .
+COPY settings.gradle .
+COPY src ./src
+ENV SPRING_PROFILES_ACTIVE prod
+RUN chmod +x ./gradlew
+
+# Build
+RUN ./gradlew nativeCompile -PskipTests --no-daemon
+
+#
+# Run
+#
+FROM container-registry.oracle.com/os/oraclelinux:9-slim as runner
+
+EXPOSE 8080
+
+COPY src/resources/db ./db
+COPY src/resources/META_INF ./META_INF
+COPY src/resources/application.yml .
+COPY --from=builder /app/build/native/nativeCompile/product_api app
+
+ENTRYPOINT ["/app"]

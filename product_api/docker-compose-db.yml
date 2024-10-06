@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: products
+      POSTGRES_USER: admin123
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"

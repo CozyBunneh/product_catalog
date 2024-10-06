@@ -44,6 +44,7 @@ public class ProductController {
   private static final Integer REFILL_DURATION_IN_MIN = 1;
   private static final Integer CONSUME_AMOUNT = 1;
   private static final String RATE_LIMIT_REMAINING_HEADER = "X-Rate-Limit-Remaining";
+  private static final Integer DEFAULT_MAX_DISTANCE = 2;
 
   private final ProductService productService;
   private final Bucket bucket;
@@ -70,9 +71,9 @@ public class ProductController {
 
   @GetMapping("/products")
   public Mono<ResponseEntity<List<ProductV1>>> get() {
-    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(1);
+    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
-      productService.getAll().collectList()
+      return productService.getAll().collectList()
           .map(products -> okResponse(products.stream().map(product -> ProductV1.fromModel(product)).toList(), probe));
     }
     return Mono.just(tooManyRequestsBuilder().build());
@@ -81,11 +82,11 @@ public class ProductController {
   @GetMapping("/search")
   public Mono<ResponseEntity<List<ProductV1>>> get(@RequestParam Optional<String> query,
       @RequestParam Optional<Integer> maxDistance) {
-    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(1);
+    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
       // Try to search by query, fallback to get all
       return query.map(queryDef -> {
-        return productService.fuzzySearch(new GetProductByFuzzyFindQuery(queryDef, maxDistance.orElse(2))).collectList()
+        return productService.fuzzySearch(new GetProductByFuzzyFindQuery(queryDef, maxDistance.orElse(DEFAULT_MAX_DISTANCE))).collectList()
             .map(
                 products -> okResponse(products.stream().map(product -> ProductV1.fromModel(product)).toList(), probe));
       }).orElse(productService.getAll().collectList()
@@ -96,7 +97,7 @@ public class ProductController {
 
   @PostMapping("/products")
   public Mono<ResponseEntity<ProductV1>> create(@RequestBody CreateProductV1 request) {
-    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(1);
+    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
       return productService.create(request.toCreateProductCommand())
           .map(model -> okResponse(ProductV1.fromModel(model), probe))
@@ -107,7 +108,7 @@ public class ProductController {
 
   @PutMapping("/")
   public Mono<ResponseEntity<ProductV1>> update(@RequestBody ProductV1 request) {
-    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(1);
+    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
       return productService.update(request.toUpdateProductCommand())
           .map(model -> okResponse(ProductV1.fromModel(model), probe))
@@ -118,7 +119,7 @@ public class ProductController {
 
   @DeleteMapping("/{id}")
   public Mono<ResponseEntity<Void>> delete(@PathVariable UUID id) {
-    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(1);
+    ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
       return productService.delete(new DeleteProductCommand(id)).map(voided -> okResponse(voided, probe))
           .switchIfEmpty(Mono.just(ResponseEntity.badRequest().build()));

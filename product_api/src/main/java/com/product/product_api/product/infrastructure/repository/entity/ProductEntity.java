@@ -29,7 +29,7 @@ public record ProductEntity(
 
     @Column(name = "price", nullable = false) Long price,
 
-    @Column(name = "imageUrl", nullable = false) String imageUrl) {
+    @Column(name = "image_url", nullable = false) String imageUrl) {
 
   public static List<Product> toModels(List<ProductEntity> entities) {
     return entities.stream().map(entity -> entity.toModel()).toList();
