@@ -53,7 +53,7 @@ public class ProductService {
               model.price(), model.imageUrl());
           return productRepositoryCrud.save(updated).map(entity2 -> entity2.toModel());
         }).switchIfEmpty(
-            Mono.error(new IllegalArgumentException(String.format("product for id not % found", model.id()))));
+            Mono.error(new IllegalArgumentException(String.format("product for id %s not found", model.id().toString()))));
   }
 
   public Mono<Void> delete(DeleteProductCommand command) {

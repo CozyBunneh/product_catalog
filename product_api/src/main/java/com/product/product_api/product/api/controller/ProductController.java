@@ -106,7 +106,7 @@ public class ProductController {
     return Mono.just(tooManyRequestsBuilder().build());
   }
 
-  @PutMapping("/")
+  @PutMapping("/products")
   public Mono<ResponseEntity<ProductV1>> update(@RequestBody ProductV1 request) {
     ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
@@ -117,12 +117,11 @@ public class ProductController {
     return Mono.just(tooManyRequestsBuilder().build());
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/products/{id}")
   public Mono<ResponseEntity<Void>> delete(@PathVariable UUID id) {
     ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
-      return productService.delete(new DeleteProductCommand(id)).map(voided -> okResponse(voided, probe))
-          .switchIfEmpty(Mono.just(ResponseEntity.badRequest().build()));
+      return productService.delete(new DeleteProductCommand(id)).map(voided -> okResponse(voided, probe));
     }
     return Mono.just(tooManyRequestsBuilder().build());
   }
