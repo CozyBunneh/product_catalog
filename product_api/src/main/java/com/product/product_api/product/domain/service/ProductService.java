@@ -64,8 +64,5 @@ public class ProductService {
     return productRepositorySorting
         .fuzzySearch("%" + query.searchTerm() + "%", query.searchTerm(), query.maxDistance())
         .map(entity -> entity.toModel());
-    // return productRepositorySorting
-    //     .fuzzySearchNameContains(query.searchTerm(), query.maxDistance())
-    //     .map(entity -> entity.toModel());
   }
 }
