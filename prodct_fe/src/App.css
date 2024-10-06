@@ -354,6 +354,57 @@ ul>li {
   color: white;
 }
 
+@media (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid var(--comment);
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  /*Here we are setting each td display to block*/
+  table td {
+    border-bottom: 1px solid var(--comment);
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  /*
+Now the other data-label we have added on each td comes into play.
+*/
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
 .right-align {
   text-align: right;
 }
