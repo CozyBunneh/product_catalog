@@ -62,7 +62,6 @@ const ProductTable: React.FC = () => {
             placeholder="Enter search query"
             className="mb-1"
           />
-          <button className="ml-1" onClick={handleFetchByQuery}>Search</button>
           <button className="ml-1 button-danger" onClick={handleFetchClear}>Clear</button>
         </div>
         <ProductForm style={{ alignSelf: "flex-end", marginLeft: "auto" }} onSubmit={createProduct} />
