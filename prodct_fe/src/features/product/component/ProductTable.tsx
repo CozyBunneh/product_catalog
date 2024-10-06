@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../hook/useProduct";
 import ProductForm from "./ProductForm";
 import ProductItem from "./ProductItem";
@@ -14,15 +14,39 @@ const ProductTable: React.FC = () => {
     reloadProducts
   } = useProducts();
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
+  const debounceDelay = 300;
 
-  const handleFetchByName = async () => {
-    if (searchQuery) {
-      await getProductsByQyery(searchQuery);
+  // Update the debounced search query after a delay
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+    }, debounceDelay);
+
+    // Cleanup function to clear the timeout if the component unmounts or if searchQuery changes
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchQuery]);
+
+  // Effect to perform the search when the debounced search query changes
+  useEffect(() => {
+    if (debouncedSearchQuery) {
+      handleFetchByQuery();
+    } else {
+      handleFetchClear();
+    }
+  }, [debouncedSearchQuery]);
+
+  const handleFetchByQuery = async () => {
+    if (debouncedSearchQuery) {
+      await getProductsByQyery(debouncedSearchQuery);
     }
   };
 
   const handleFetchClear = async () => {
     setSearchQuery("");
+    setDebouncedSearchQuery("");
     await reloadProducts();
   };
 
@@ -38,7 +62,7 @@ const ProductTable: React.FC = () => {
             placeholder="Enter search query"
             className="mb-1"
           />
-          <button className="ml-1" onClick={handleFetchByName}>Search</button>
+          <button className="ml-1" onClick={handleFetchByQuery}>Search</button>
           <button className="ml-1 button-danger" onClick={handleFetchClear}>Clear</button>
         </div>
         <ProductForm style={{ alignSelf: "flex-end", marginLeft: "auto" }} onSubmit={createProduct} />
@@ -49,8 +73,9 @@ const ProductTable: React.FC = () => {
         <table className="styled-table">
           <thead>
             <tr>
-              <th>Id</th>
               <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
               <th className="right-align">Actions</th>
             </tr>
           </thead>

@@ -39,8 +39,8 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1/")
 public class ProductController {
 
-  private static final Integer CAPACITY = 20;
-  private static final Integer REFILL_TOKENS = 20;
+  private static final Integer CAPACITY = 60;
+  private static final Integer REFILL_TOKENS = 60;
   private static final Integer REFILL_DURATION_IN_MIN = 1;
   private static final Integer CONSUME_AMOUNT = 1;
   private static final String RATE_LIMIT_REMAINING_HEADER = "X-Rate-Limit-Remaining";

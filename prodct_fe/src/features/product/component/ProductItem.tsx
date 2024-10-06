@@ -29,8 +29,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, onEdit, onDelete }) 
 
   return (
     <tr onClick={() => navigateToDetails(product.id)}>
-      <td>{product.id}</td>
       <td>{product.name}</td>
+      <td>{product.category}</td>
+      <td>{product.price}</td>
       <td className="right-align">
         <button className="mb-1" onClick={(event) => handleEdit(event)}>Edit</button>
         <button className="mb-1 ml-1 button-danger" onClick={(event) => handleDelete(event)}>Delete</button>

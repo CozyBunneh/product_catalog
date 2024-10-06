@@ -23,6 +23,7 @@ public interface ProductRepositorySorting extends ReactiveSortingRepository<Prod
   Flux<ProductEntity> findByNameContainingIgnoreCase(String namePattern, Pageable pageable);
 
   @Query(value = "SELECT * FROM products " +
-      "WHERE LEVENSHTEIN(replace(name, ' ', ''), replace(:searchTerm, ' ', '')) <= :maxDistance")
-  Flux<ProductEntity> fuzzySearch(@Param("searchTerm") String searchTerm, @Param("maxDistance") int maxDistance);
+      "WHERE replace(lower(name), ' ', '') LIKE lower(:searchLikeTerm) OR " +
+      "LEVENSHTEIN(replace(lower(name), ' ', ''), replace(lower(:searchTerm), ' ', '')) <= :maxDistance")
+  Flux<ProductEntity> fuzzySearch(@Param("searchLikeTerm") String searchLikeTerm, @Param("searchTerm") String searchTerm, @Param("maxDistance") int maxDistance);
 }
