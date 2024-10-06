@@ -1,6 +1,6 @@
 import { CreateProductV1, ProductV1 } from "../type/productTypes";
 
-const API_URL = "http://localhost:8080/api/v1/";
+const API_URL = "http://localhost:8080/api/v1";
 const PRODUCTS_PATH = "products";
 const SEARCH_PATH = "search";
 
@@ -15,7 +15,7 @@ export const fetchProductById = async (id: string): Promise<ProductV1> => {
 };
 
 export const fetchProductsFuzzySearch = async (query: string): Promise<ProductV1[]> => {
-  const response = await fetch(`${API_URL}/${SEARCH_PATH}?qyery=${query}`);
+  const response = await fetch(`${API_URL}/${SEARCH_PATH}?query=${query}`);
   return response.json();
 };
 

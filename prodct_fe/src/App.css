@@ -1,38 +1,404 @@
-.App {
+:root {
+  --background-dark: #282a36;
+  --background: #282a36;
+  --background-light: #1f2128;
+  --current-line: #44475a;
+  --selection: #44475a;
+  --foreground: #f8f8f2;
+  --comment: #6272a4;
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+  --table-border: 10px;
+  --button-radius: 20px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  color: var(--comment);
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--green);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--pink);
+}
+
+p {
+  color: var(--foreground);
+}
+
+.p-detail {
+  color: var(--purple);
+}
+
+code,
+pre {
+  background-color: var(--current-line);
+  color: var(--foreground);
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Buttons */
+button {
+  background-color: var(--comment);
+  border: none;
+  color: var(--foreground);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: var(--button-radius);
+}
+
+.button-danger {
+  background-color: var(--pink);
+  border: none;
+  color: var(--background);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: var(--button-radius);
+}
+
+.button-flat {
+  background-color: var(--background);
+  border: none;
+  color: var(--cyan);
+  padding: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: var(--button-radius);
+}
+
+button:hover {
+  background-color: var(--green);
+  color: var(--background);
+}
+
+.button-flat:hover {
+  background-color: var(--background);
+  color: var(--green);
+}
+
+input,
+textarea {
+  background-color: var(--current-line);
+  color: var(--foreground);
+  border: 1px solid var(--comment);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--green);
+  outline: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Highlighting */
+.highlight {
+  background-color: var(--orange);
+  color: var(--background);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.comment {
+  color: var(--comment);
+}
+
+.error {
+  color: var(--red);
+}
+
+.success {
+  color: var(--green);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--current-line);
+  padding: 15px;
+}
+
+.navbar a {
+  color: var(--purple);
+  padding: 10px;
+}
+
+.navbar a:hover {
+  color: var(--pink);
+}
+
+.footer {
+  background-color: var(--background);
+  padding: 20px;
   text-align: center;
+  color: var(--comment);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+  background-color: var(--current-line);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.card h2 {
+  color: var(--yellow);
+}
+
+.card p {
+  color: var(--foreground);
+}
+
+ul>li {
+  list-style-type: none;
+}
+
+.m-1 {
+  margin: 0.5em;
+}
+
+.m-2 {
+  margin: 1em;
+}
+
+.m-3 {
+  margin: 1.5em;
+}
+
+.mt-1 {
+  margin-top: 0.5em;
+}
+
+.mt-2 {
+  margin-top: 1em;
+}
+
+.mt-3 {
+  margin-top: 1.5em;
+}
+
+.mb-1 {
+  margin-bottom: 0.5em;
+}
+
+.mb-2 {
+  margin-bottom: 1em;
+}
+
+.mb-3 {
+  margin-bottom: 1.5em;
+}
+
+.ml-1 {
+  margin-left: 0.5em;
+}
+
+.ml-2 {
+  margin-left: 1em;
+}
+
+.ml-3 {
+  margin-left: 1.5em;
+}
+
+.mr-1 {
+  margin-right: 0.5em;
+}
+
+.mr-2 {
+  margin-right: 1em;
+}
+
+.mr-3 {
+  margin-right: 1.5em;
+}
+
+.p-1 {
+  padding: 0.5em;
+}
+
+.p-2 {
+  padding: 1em;
+}
+
+.p-3 {
+  padding: 1.5em;
+}
+
+.pt-1 {
+  padding-top: 0.5em;
+}
+
+.pb-2 {
+  padding-top: 1em;
+}
+
+.pb-3 {
+  padding-top: 1.5em;
+}
+
+.pb-1 {
+  padding-bottom: 0.5em;
+}
+
+.pb-2 {
+  padding-bottom: 1em;
+}
+
+.pb-3 {
+  padding-bottom: 1.5em;
+}
+
+.pl-1 {
+  padding-left: 0.5em;
+}
+
+.pl-2 {
+  padding-left: 1em;
+}
+
+.pl-3 {
+  padding-left: 1.5em;
+}
+
+.pr-1 {
+  padding-right: 0.5em;
+}
+
+.pr-2 {
+  padding-right: 1em;
+}
+
+.pr-3 {
+  padding-right: 1.5em;
+}
+
+.styled-table {
+  width: 100%;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: var(--table-border);
+  border: 1px solid var(--comment);
+  overflow: hidden;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  /* border-right: ; */
+  border-right: 1px solid var(--background);
+}
+
+.styled-table thead tr {
+  background-color: var(--comment);
+}
+
+.styled-table tbody tr {
+  background-color: var(--background-light);
+  cursor: pointer;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: var(--background-dark);
+}
+
+.styled-table tbody tr:hover {
+  background-color: var(--selection);
+}
+
+.styled-table th {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.right-align {
+  text-align: right;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  background-color: var(--background);
+  padding: 2em;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  width: 30em;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  body {
+    .popup-content {
+      width: 16em;
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+
+.close-button {
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: var(--pink);
+}
+
+.close-button:hover {
+  color: var(--green);
 }

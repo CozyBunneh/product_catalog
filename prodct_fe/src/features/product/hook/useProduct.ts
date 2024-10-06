@@ -9,13 +9,17 @@ import {
 } from "../service/productService";
 import { CreateProductV1, ProductV1 } from "../type/productTypes";
 
-export const useTests = () => {
+export const useProducts = () => {
   const [products, setProducts] = useState<ProductV1[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const loadProducts = async () => {
     const fetchedProducts = await fetchProducts();
-    setProducts(fetchedProducts);
+    if (fetchedProducts) {
+      setProducts(fetchedProducts);
+    } else {
+      setProducts([]);
+    }
     setLoading(false);
   };
 
