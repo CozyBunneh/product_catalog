@@ -72,8 +72,6 @@ public class ProductE2ETest {
     postgres.close();
   }
 
-  private UUID createdId;
-
   @Test
   @Order(1)
   public void testCreateTest() {
@@ -95,7 +93,6 @@ public class ProductE2ETest {
           assertThat(createdProduct.description(), is("description1"));
           assertThat(createdProduct.price(), is(1L));
           assertThat(createdProduct.imageUrl(), is("imageUrl1"));
-          createdId = createdProduct.id();
         });
 
     webTestClient.post()
