@@ -44,7 +44,7 @@ public class ProductController {
   private static final Integer REFILL_DURATION_IN_MIN = 1;
   private static final Integer CONSUME_AMOUNT = 1;
   private static final String RATE_LIMIT_REMAINING_HEADER = "X-Rate-Limit-Remaining";
-  private static final Integer DEFAULT_MAX_DISTANCE = 2;
+  private static final Integer DEFAULT_MAX_DISTANCE = 3;
 
   private final ProductService productService;
   private final Bucket bucket;
