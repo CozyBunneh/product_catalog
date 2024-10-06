@@ -60,7 +60,7 @@ public class ProductService {
     return productRepositoryCrud.deleteById(command.id());
   }
 
-  public Flux<Product> getFuzzyByName(GetProductByFuzzyFindQuery query) {
+  public Flux<Product> fuzzySearch(GetProductByFuzzyFindQuery query) {
     return productRepositorySorting
         .fuzzySearch(query.searchTerm(), query.maxDistance())
         .map(entity -> entity.toModel());
