@@ -18,12 +18,15 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface ProductRepositorySorting extends ReactiveSortingRepository<ProductEntity, UUID> {
 
-  Flux<ProductEntity> findAllBy(Pageable pageable);
+  Flux<ProductEntity> findAllByOrderByName(Pageable pageable);
 
   Flux<ProductEntity> findByNameContainingIgnoreCase(String namePattern, Pageable pageable);
 
-  @Query(value = "SELECT * FROM products " +
-      "WHERE replace(lower(name), ' ', '') LIKE lower(:searchLikeTerm) OR " +
-      "LEVENSHTEIN(replace(lower(name), ' ', ''), replace(lower(:searchTerm), ' ', '')) <= :maxDistance")
-  Flux<ProductEntity> fuzzySearch(@Param("searchLikeTerm") String searchLikeTerm, @Param("searchTerm") String searchTerm, @Param("maxDistance") int maxDistance);
+  @Query(value = "SELECT " +
+    "id, name, category, description, price, image_url, " +
+    "strict_word_similarity(name, :searchTerm) AS score " +
+    "FROM products " +
+    "WHERE strict_word_similarity(name, :searchTerm) > 0 " +
+    "ORDER BY score DESC; ")
+  Flux<ProductEntity> fuzzySearch(@Param("searchTerm") String searchTerm);
 }

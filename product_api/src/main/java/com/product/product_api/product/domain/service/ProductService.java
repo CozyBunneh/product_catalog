@@ -37,7 +37,7 @@ public class ProductService {
   }
 
   public Flux<Product> getAll() {
-    return productRepositorySorting.findAllBy(Pageable.unpaged(Sort.by(Sort.Direction.ASC, "name")))
+    return productRepositorySorting.findAllByOrderByName(Pageable.unpaged(Sort.by(Sort.Direction.ASC, "name")))
         .map(entity -> entity.toModel());
   }
 
@@ -62,7 +62,7 @@ public class ProductService {
 
   public Flux<Product> fuzzySearch(GetProductByFuzzyFindQuery query) {
     return productRepositorySorting
-        .fuzzySearch("%" + query.searchTerm() + "%", query.searchTerm(), query.maxDistance())
+        .fuzzySearch(query.searchTerm())
         .map(entity -> entity.toModel());
   }
 }

@@ -44,7 +44,6 @@ public class ProductController {
   private static final Integer REFILL_DURATION_IN_MIN = 1;
   private static final Integer CONSUME_AMOUNT = 1;
   private static final String RATE_LIMIT_REMAINING_HEADER = "X-Rate-Limit-Remaining";
-  private static final Integer DEFAULT_MAX_DISTANCE = 3;
 
   private final ProductService productService;
   private final Bucket bucket;
@@ -80,13 +79,12 @@ public class ProductController {
   }
 
   @GetMapping("/search")
-  public Mono<ResponseEntity<List<ProductV1>>> get(@RequestParam Optional<String> query,
-      @RequestParam Optional<Integer> maxDistance) {
+  public Mono<ResponseEntity<List<ProductV1>>> get(@RequestParam Optional<String> query) {
     ConsumptionProbe probe = bucket.tryConsumeAndReturnRemaining(CONSUME_AMOUNT);
     if (probe.isConsumed()) {
       // Try to search by query, fallback to get all
       return query.map(queryDef -> {
-        return productService.fuzzySearch(new GetProductByFuzzyFindQuery(queryDef, maxDistance.orElse(DEFAULT_MAX_DISTANCE))).collectList()
+        return productService.fuzzySearch(new GetProductByFuzzyFindQuery(queryDef)).collectList()
             .map(
                 products -> okResponse(products.stream().map(product -> ProductV1.fromModel(product)).toList(), probe));
       }).orElse(productService.getAll().collectList()

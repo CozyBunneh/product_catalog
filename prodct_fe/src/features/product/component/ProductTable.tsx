@@ -79,14 +79,14 @@ const ProductTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products && products.length ? products.map((product) => (
               <ProductItem
                 key={product.id}
                 product={product}
                 onEdit={editProduct}
                 onDelete={removeProduct}
               />
-            ))}
+            )) : ""}
           </tbody>
         </table>
       )}
