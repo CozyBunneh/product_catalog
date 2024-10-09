@@ -51,134 +51,374 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: price
-                  type: BIGINT
+                  type: NUMERIC(10, 2)
               - column:
                   constraints:
                     nullable: false
                   name: image_url
                   type: VARCHAR(255)
             tableName: products
-  # - changeSet:
-  #     id: add-products-1
-  #     author: julia
-  #     changes:
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 1"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 2"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 3"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 4"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 5"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 6"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 7"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 8"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 9"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 10"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 11"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 12"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 13"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 14"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 15"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 16"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 17"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 18"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 19"
-  #       - insert:
-  #           tableName: test_table
-  #           columns:
-  #             - column:
-  #                 name: name
-  #                 value: "Test 20"
+  - changeSet:
+      id: add-products-1
+      author: julia
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Eco-Friendly Water Bottle"
+              - column:
+                  name: category
+                  value: "Kitchenware"
+              - column:
+                  name: description
+                  value: "A reusable water bottle made from sustainable materials, designed to keep drinks cold for 24 hours and hot for 12 hours."
+              - column:
+                  name: price
+                  value: "25.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/water-bottle.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Wireless Earbuds"
+              - column:
+                  name: category
+                  value: "Electronics"
+              - column:
+                  name: description
+                  value: "High-quality wireless earbuds with noise cancellation and a 20-hour battery life."
+              - column:
+                  name: price
+                  value: "79.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/earbuds.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Organic Cotton T-Shirt"
+              - column:
+                  name: category
+                  value: "Apparel"
+              - column:
+                  name: description
+                  value: "Soft and breathable t-shirt made from 100% organic cotton, available in various colors."
+              - column:
+                  name: price
+                  value: "19.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/tshirt.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Smart Fitness Tracker"
+              - column:
+                  name: category
+                  value: "Electronics"
+              - column:
+                  name: description
+                  value: "A sleek fitness tracker that monitors heart rate, steps, and sleep patterns, with a companion app for insights."
+              - column:
+                  name: price
+                  value: "49.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/fitness-tracker.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Bamboo Toothbrush"
+              - column:
+                  name: category
+                  value: "Personal Care"
+              - column:
+                  name: description
+                  value: "An eco-friendly toothbrush made from bamboo, featuring biodegradable bristles."
+              - column:
+                  name: price
+                  value: "4.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/toothbrush.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Portable Phone Charger"
+              - column:
+                  name: category
+                  value: "Electronics"
+              - column:
+                  name: description
+                  value: "A compact power bank with a 10,000mAh capacity, perfect for charging devices on the go."
+              - column:
+                  name: price
+                  value: "29.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/phone-charger.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Yoga Mat"
+              - column:
+                  name: category
+                  value: "Fitness"
+              - column:
+                  name: description
+                  value: "A non-slip yoga mat made from eco-friendly materials, providing comfort and stability during workouts."
+              - column:
+                  name: price
+                  value: "39.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/yoga-mat.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Scented Soy Candles"
+              - column:
+                  name: category
+                  value: "Home Decor"
+              - column:
+                  name: description
+                  value: "Hand-poured soy candles with natural fragrances, perfect for creating a relaxing atmosphere."
+              - column:
+                  name: price
+                  value: "15.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/candles.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Multi-Tool Pocket Knife"
+              - column:
+                  name: category
+                  value: "Outdoor Gear"
+              - column:
+                  name: description
+                  value: "A versatile pocket knife with multiple tools, ideal for camping and outdoor adventures."
+              - column:
+                  name: price
+                  value: "34.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/multi-tool.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Plant-Based Protein Powder"
+              - column:
+                  name: category
+                  value: "Health Supplements"
+              - column:
+                  name: description
+                  value: "A vegan protein powder made from pea and brown rice protein, perfect for smoothies and shakes."
+              - column:
+                  name: price
+                  value: "29.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/protein-powder.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Bluetooth Speaker"
+              - column:
+                  name: category
+                  value: "Electronics"
+              - column:
+                  name: description
+                  value: "A portable Bluetooth speaker with high-quality sound and a waterproof design."
+              - column:
+                  name: price
+                  value: "59.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/bluetooth-speaker.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Reusable Shopping Bags"
+              - column:
+                  name: category
+                  value: "Eco-Friendly"
+              - column:
+                  name: description
+                  value: "Set of 5 durable, foldable shopping bags made from recycled materials."
+              - column:
+                  name: price
+                  value: "14.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/shopping-bags.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Essential Oil Diffuser"
+              - column:
+                  name: category
+                  value: "Home Fragrance"
+              - column:
+                  name: description
+                  value: "An ultrasonic diffuser that disperses essential oils into the air, promoting relaxation and wellness."
+              - column:
+                  name: price
+                  value: "39.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/diffuser.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Adjustable Dumbbells"
+              - column:
+                  name: category
+                  value: "Fitness Equipment"
+              - column:
+                  name: description
+                  value: "A set of adjustable dumbbells that can be easily modified for different weight levels."
+              - column:
+                  name: price
+                  value: "149.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/dumbbells.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Travel Backpack"
+              - column:
+                  name: category
+                  value: "Luggage"
+              - column:
+                  name: description
+                  value: "A spacious and durable travel backpack with multiple compartments and a laptop sleeve."
+              - column:
+                  name: price
+                  value: "89.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/travel-backpack.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Pet Grooming Kit"
+              - column:
+                  name: category
+                  value: "Pet Supplies"
+              - column:
+                  name: description
+                  value: "A complete grooming kit for pets, including clippers, brushes, and nail trimmers."
+              - column:
+                  name: price
+                  value: "39.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/pet-grooming-kit.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Indoor Herb Garden Kit"
+              - column:
+                  name: category
+                  value: "Gardening"
+              - column:
+                  name: description
+                  value: "A complete kit for growing fresh herbs indoors, including pots, soil, and seeds."
+              - column:
+                  name: price
+                  value: "24.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/herb-garden-kit.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Memory Foam Pillow"
+              - column:
+                  name: category
+                  value: "Home Goods"
+              - column:
+                  name: description
+                  value: "A supportive memory foam pillow designed to provide comfort and improve sleep quality."
+              - column:
+                  name: price
+                  value: "49.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/memory-foam-pillow.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Digital Kitchen Scale"
+              - column:
+                  name: category
+                  value: "Kitchenware"
+              - column:
+                  name: description
+                  value: "A precise digital scale for measuring ingredients, featuring a sleek design and easy-to-read display."
+              - column:
+                  name: price
+                  value: "19.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/kitchen-scale.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Kids' Educational Tablet"
+              - column:
+                  name: category
+                  value: "Electronics"
+              - column:
+                  name: description
+                  value: "A kid-friendly tablet loaded with educational games and apps, designed to promote learning and creativity."
+              - column:
+                  name: price
+                  value: "129.99"
+              - column:
+                  name: image_url
+                  value: "https://example.com/images/educational-tablet.jpg"
