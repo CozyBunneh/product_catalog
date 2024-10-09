@@ -42,11 +42,11 @@ const Product: React.FC = () => {
           <h4>Description</h4>
           <p id={descriptionId}>{fetchedProduct.description}</p>
           <h4>Price</h4>
-          <p id={priceId}>{fetchedProduct.price}</p>
+          <p id={priceId}>€{fetchedProduct.price}</p>
           <h4>Image URL</h4>
           <p id={imageUrlId}>{fetchedProduct.imageUrl}</p>
         </div>
-      ): <div>Loading...</div>}
+      ) : <div>Loading...</div>}
     </div>
   );
 };

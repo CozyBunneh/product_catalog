@@ -76,10 +76,10 @@ describe("Products Tests", () => {
     const secondProductPrice = await page.evaluate(el => el.cells[2].innerText, productItems[1]);
     expect(firstProductName).toContain("name1");
     expect(firstProductCategory).toContain("category1");
-    expect(firstProductPrice).toContain("1");
+    expect(firstProductPrice).toContain("€1");
     expect(secondProductName).toContain("name2");
     expect(secondProductCategory).toContain("category2");
-    expect(secondProductPrice).toContain("2");
+    expect(secondProductPrice).toContain("€2");
 
   });
 });

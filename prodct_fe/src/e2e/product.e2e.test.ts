@@ -71,7 +71,7 @@ describe("Product Tests", () => {
     expect(name).toContain("name1");
     expect(category).toContain("category1");
     expect(description).toContain("description1");
-    expect(price).toContain("1");
+    expect(price).toContain("€1");
     expect(imageUrl).toContain("imageUrl1");
   });
 });
