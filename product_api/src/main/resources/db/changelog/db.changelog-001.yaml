@@ -79,7 +79,7 @@ databaseChangeLog:
                   value: "25.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/water-bottle.jpg"
+                  value: "https://media.istockphoto.com/id/1299291084/sv/foto/gr%C3%A5-%C3%A5teranv%C3%A4ndbar-flaska-p%C3%A5-gr%C3%A5-bakgrund.webp?s=2048x2048&w=is&k=20&c=gMWwJ4AsP_BKwdqZUUe0smh1fzozd8HQhNYmXqSQLTk="
         - insert:
             tableName: products
             columns:
@@ -97,7 +97,7 @@ databaseChangeLog:
                   value: "79.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/earbuds.jpg"
+                  value: "https://media.istockphoto.com/id/1346147559/sv/foto/modern-wireless-bluetooth-headphones-with-charging-case-on-a-blue-background.webp?s=2048x2048&w=is&k=20&c=KzYv2T18_yId2VH-ltkQKCgkOIxRc5_P5q6lMWP5a88="
         - insert:
             tableName: products
             columns:
@@ -115,7 +115,7 @@ databaseChangeLog:
                   value: "19.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/tshirt.jpg"
+                  value: "https://media.istockphoto.com/id/1032521774/sv/foto/ekologiska-kl%C3%A4der-t-shirts-h%C3%A4ngande-p%C3%A5-tr%C3%A4-galgar-med-gr%C3%B6n-skog-natur-i-bakgrunden.webp?s=2048x2048&w=is&k=20&c=qr7BGosivbowQrzpz1jJWbUI9WZZSIsdswxOFFEjnOA="
         - insert:
             tableName: products
             columns:
@@ -133,7 +133,7 @@ databaseChangeLog:
                   value: "49.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/fitness-tracker.jpg"
+                  value: "https://media.istockphoto.com/id/2121795412/sv/vektor/smart-watch-with-narrow-bracelet-pulse-counter-and-time-numbers.webp?s=2048x2048&w=is&k=20&c=--RUtFIlKICFpjrmKQaWgnBhlDIljgaZOj8qm7rHDv8="
         - insert:
             tableName: products
             columns:
@@ -151,7 +151,7 @@ databaseChangeLog:
                   value: "4.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/toothbrush.jpg"
+                  value: "https://media.istockphoto.com/id/1137633623/sv/foto/bambu-tandborste-isolerad-p%C3%A5-vit-bakgrund.webp?s=2048x2048&w=is&k=20&c=n6P73MnMAmve4OU_1beQjQeR-D9mG4qVl-PlLYvtDF0="
         - insert:
             tableName: products
             columns:
@@ -169,7 +169,7 @@ databaseChangeLog:
                   value: "29.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/phone-charger.jpg"
+                  value: "https://media.istockphoto.com/id/1154679320/sv/foto/b%C3%A4rbar-aluminium-kraft-bank-med-usb-kabel.webp?s=2048x2048&w=is&k=20&c=RsgRXc284_JwhGWx1ca30_3CkMVVnayN3DHJSZJKSLE="
         - insert:
             tableName: products
             columns:
@@ -187,7 +187,7 @@ databaseChangeLog:
                   value: "39.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/yoga-mat.jpg"
+                  value: "https://media.istockphoto.com/id/612825258/sv/foto/yoga-training-concept.webp?s=2048x2048&w=is&k=20&c=0Iw9AuokHY6r4Ja_4UDoRZ6niE1nyLpA7LdyCf3ugxU="
         - insert:
             tableName: products
             columns:
@@ -205,7 +205,7 @@ databaseChangeLog:
                   value: "15.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/candles.jpg"
+                  value: "https://media.istockphoto.com/id/1634338395/sv/foto/burning-candle-book-and-cornflowers-aesthetic-summer-photo.webp?s=2048x2048&w=is&k=20&c=yfIbvcRV1nMDC_kQkHxMm1GCUNoaP2B73NnrRfOV6hE="
         - insert:
             tableName: products
             columns:
@@ -223,7 +223,7 @@ databaseChangeLog:
                   value: "34.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/multi-tool.jpg"
+                  value: "https://media.istockphoto.com/id/956098988/sv/foto/schweizisk-arm%C3%A9kniv-p%C3%A5-svart-bakgrund.webp?s=2048x2048&w=is&k=20&c=1oAa3CToSG3m8IPxFFYidOCBjkFuNzlPI_69e7WDf6Q="
         - insert:
             tableName: products
             columns:
@@ -241,7 +241,7 @@ databaseChangeLog:
                   value: "29.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/protein-powder.jpg"
+                  value: "https://media.istockphoto.com/id/1283156742/sv/foto/gr%C3%B6nt-pulver-i-en-sked.webp?s=2048x2048&w=is&k=20&c=A9lAzd22LgMwMkYlPNchfMrrYy9O1g0R1Sl2rCU5jno="
         - insert:
             tableName: products
             columns:
@@ -259,7 +259,7 @@ databaseChangeLog:
                   value: "59.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/bluetooth-speaker.jpg"
+                  value: "https://media.istockphoto.com/id/2094441824/sv/foto/portable-wireless-audio-speaker-isolated-on-white.webp?s=2048x2048&w=is&k=20&c=SziT_mVHeyXCWATSaw5E33C94N5aKu92PpT3c4uS4h0="
         - insert:
             tableName: products
             columns:
@@ -277,7 +277,7 @@ databaseChangeLog:
                   value: "14.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/shopping-bags.jpg"
+                  value: "https://media.istockphoto.com/id/1400960063/sv/foto/tote-bag-canvas-fabric-cloth-shopping-sack-mockup-blank-template-isolated-on-white-background.webp?s=2048x2048&w=is&k=20&c=KucBLe_XB1LZWyPxvCsrbQ_feyzs631dZz-Mc-gIPFg="
         - insert:
             tableName: products
             columns:
@@ -295,7 +295,7 @@ databaseChangeLog:
                   value: "39.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/diffuser.jpg"
+                  value: "https://media.istockphoto.com/id/1383117673/sv/foto/a-cozy-composition-with-an-aroma-diffuser-and-candles-in-a-home-interior.webp?s=2048x2048&w=is&k=20&c=8vT94II4WpCT70Y6wvTMcMxyXE1T7cVv2jysmTZusF0="
         - insert:
             tableName: products
             columns:
@@ -313,7 +313,7 @@ databaseChangeLog:
                   value: "149.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/dumbbells.jpg"
+                  value: "https://media.istockphoto.com/id/1374747351/sv/foto/modern-adjustable-dumbbell-isolated-on-white-background.webp?s=2048x2048&w=is&k=20&c=CMB1S1Dvsbn7SXCdW-qTYrsT-ylAykpDtexyfllXnl4="
         - insert:
             tableName: products
             columns:
@@ -331,7 +331,7 @@ databaseChangeLog:
                   value: "89.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/travel-backpack.jpg"
+                  value: "https://media.istockphoto.com/id/173583945/sv/foto/rucksack-with-clipping-path.webp?s=2048x2048&w=is&k=20&c=PNrpHLp8MVbp7OvZCXdIElOje0TQogkAqW-EwaXNIsw="
         - insert:
             tableName: products
             columns:
@@ -349,7 +349,7 @@ databaseChangeLog:
                   value: "39.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/pet-grooming-kit.jpg"
+                  value: "https://media.istockphoto.com/id/536684474/sv/foto/little-dog-at-spa.webp?s=2048x2048&w=is&k=20&c=2AwysfQ0gyqKcKcV9F8WiP0EM5hkUenuAdX39SnBJpk="
         - insert:
             tableName: products
             columns:
@@ -367,7 +367,7 @@ databaseChangeLog:
                   value: "24.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/herb-garden-kit.jpg"
+                  value: "https://media.istockphoto.com/id/1494754511/sv/foto/radish-microgreens-with-seeds-and-roots-germination-of-seeds-at-home.webp?s=2048x2048&w=is&k=20&c=_jiQQCqTlkxyEmac1X9HzZgVGlY_tnSjRi2aUfhCaI4="
         - insert:
             tableName: products
             columns:
@@ -385,7 +385,7 @@ databaseChangeLog:
                   value: "49.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/memory-foam-pillow.jpg"
+                  value: "https://media.istockphoto.com/id/1219370640/sv/foto/ortopedisk-kudde-med-minneseffekt-medicinsk-behandling-kudde-f%C3%B6r-s%C3%B6mn-comfort-memory-pillow.webp?s=2048x2048&w=is&k=20&c=LKLP7GQEl7QjnnKhR-pLjFwcwue6b3tccDuEr5OeI8I="
         - insert:
             tableName: products
             columns:
@@ -403,7 +403,7 @@ databaseChangeLog:
                   value: "19.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/kitchen-scale.jpg"
+                  value: "https://media.istockphoto.com/id/1446858315/sv/foto/digital-kitchen-scale-with-unit-buttons-3d-vector-rendering.webp?s=2048x2048&w=is&k=20&c=O5vqyjJ1NtnMgx7TTVHoR3UpkWdhcyqu68OPKQ4dbuE="
         - insert:
             tableName: products
             columns:
@@ -421,4 +421,4 @@ databaseChangeLog:
                   value: "129.99"
               - column:
                   name: image_url
-                  value: "https://example.com/images/educational-tablet.jpg"
+                  value: "https://media.istockphoto.com/id/1330655634/sv/vektor/black-tablet-computer-mockup-with-blank-horizontal-screen-front-view.webp?s=2048x2048&w=is&k=20&c=O4zmYXI4O8xE7R_2-hK2EZOc91ZU7OXCvMEyn4kcbQY="

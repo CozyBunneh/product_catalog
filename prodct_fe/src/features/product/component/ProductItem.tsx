@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ProductV1 } from "../type/productTypes";
+import { CreateProductV1, isProductV1, ProductV1 } from "../type/productTypes";
+import ProductForm from "./ProductForm";
 
 interface ProductItemProps {
   product: ProductV1;
@@ -14,11 +15,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, onEdit, onDelete }) 
     navigate(`/${id}`);
   }
 
-  const handleEdit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.stopPropagation();
-    const newProduct = prompt("Edit product:", product.name);
-    if (newProduct) {
-      onEdit({ id: product.id, name: newProduct} as ProductV1);
+  const handleEdit = (product: CreateProductV1 | ProductV1) => {
+    if (isProductV1(product)){
+      onEdit(product);
     }
   };
 
@@ -33,8 +32,13 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, onEdit, onDelete }) 
       <td data-label="Category">{product.category}</td>
       <td data-label="Price">€{product.price}</td>
       <td data-label="Actions" className="right-align">
-        <button className="mb-1" onClick={(event) => handleEdit(event)}>Edit</button>
-        <button className="mb-1 ml-1 button-danger" onClick={(event) => handleDelete(event)}>Delete</button>
+        <div></div>
+        <div style={{display: "flex"}}>
+          <ProductForm className="table-product-edit-button" id={product.id} onSubmit={handleEdit} />
+          <div className="ml-1">
+            <button className="button-danger" onClick={(event) => handleDelete(event)}>Delete</button>
+          </div>
+        </div>
       </td>
     </tr>
   );

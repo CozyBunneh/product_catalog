@@ -1,31 +1,66 @@
-import React, { useState } from "react";
-import { CreateProductV1 } from "../type/productTypes";
+import React, { useEffect, useState } from "react";
+import { CreateProductV1, ProductV1 } from "../type/productTypes";
+import { fetchProductById } from "../service/productService";
 
 interface ProductFormProps {
-  onSubmit: (product: CreateProductV1) => void;
+  id?: string | undefined;
+  onSubmit: (product: CreateProductV1 | ProductV1) => void;
   style?: React.CSSProperties;
+  className?: string | undefined;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, style }) => {
+const ProductForm: React.FC<ProductFormProps> = ({ id, onSubmit, style, className }) => {
   const [name, setName] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
+  const [fetchedProduct, setFetchedProduct] = useState<ProductV1 | null>(null);
 
-  const openPopup = () => {
+  useEffect(() => {
+    const loadProduct = async (id: string) => {
+      if (id) {
+        const product = await fetchProductById(id);
+        setFetchedProduct(product);
+      }
+    };
+    if (id && isOpen) {
+      loadProduct(id);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (fetchedProduct) {
+      setName(fetchedProduct.name);
+      setCategory(fetchedProduct.category);
+      setDescription(fetchedProduct.description);
+      setPrice(fetchedProduct.price);
+      setImageUrl(fetchedProduct.imageUrl);
+    }
+  }, [fetchedProduct]);
+
+
+  const openPopup = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.stopPropagation();
     setIsOpen(true);
   };
 
-  const closePopup = () => {
+  const closePopup = (event?: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    if (event) {
+      event.stopPropagation();
+    }
     setIsOpen(false);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
-      onSubmit({ name: name, category: category, description: description, price: price, imageUrl: imageUrl } as CreateProductV1);
+      if (id) {
+        onSubmit({ id: id, name: name, category: category, description: description, price: price, imageUrl: imageUrl } as ProductV1);
+      } else {
+        onSubmit({ name: name, category: category, description: description, price: price, imageUrl: imageUrl } as CreateProductV1);
+      }
       setName(""); // Clear the input after submission
       setCategory("");
       setDescription("");
@@ -36,16 +71,25 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, style }) => {
   };
 
   return (
-    <div style={style}>
-      <button onClick={openPopup}>Add Product</button>
+    <div className={className} style={style}>
+      {id ? (
+        <button onClick={(event) => openPopup(event)}>Edit</button>
+      ) : (
+        <button onClick={openPopup}>Add Product</button>
+      )}
       {isOpen && (
-        <div className="popup">
+        <div className="popup" onClick={(event) => closePopup(event)}>
           <form
             className="popup-content"
             onSubmit={handleSubmit}
+            onClick={(event => event.stopPropagation())}
           >
-            <span className="close-button" onClick={closePopup}>&times;</span>
-            <h2 style={{ marginTop: 0 }}>Create Product</h2>
+            <span className="close-button" onClick={(event) => closePopup(event)}>&times;</span>
+            {id ? (
+              <h2 style={{ marginTop: 0 }}>Edit Product {id}</h2>
+            ) : (
+              <h2 style={{ marginTop: 0 }}>Create Product</h2>
+            )}
             <h4 style={{ alignSelf: "start" }}>Name</h4>
             <input
               type="text"

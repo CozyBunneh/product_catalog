@@ -33,6 +33,7 @@ const Product: React.FC = () => {
       <h1>Product</h1>
       {fetchedProduct ? (
         <div>
+          <img id={imageUrlId} src={fetchedProduct.imageUrl} alt="No image" />
           <h4>Id</h4>
           <p id={productId}>{fetchedProduct.id}</p>
           <h4>Name</h4>
@@ -43,8 +44,6 @@ const Product: React.FC = () => {
           <p id={descriptionId}>{fetchedProduct.description}</p>
           <h4>Price</h4>
           <p id={priceId}>€{fetchedProduct.price}</p>
-          <h4>Image URL</h4>
-          <p id={imageUrlId}>{fetchedProduct.imageUrl}</p>
         </div>
       ) : <div>Loading...</div>}
     </div>
