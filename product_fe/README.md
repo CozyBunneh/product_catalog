@@ -1,4 +1,4 @@
-# Simple test frontend
+# Product frontend
 
 ## Install dependencies
 

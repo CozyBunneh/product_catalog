@@ -1,4 +1,4 @@
-# Simple example project
+# Product backend api
 
 ## Setup
 
