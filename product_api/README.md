@@ -1,6 +1,6 @@
 # Product backend api
 
-## Setup
+## To Setup a similar project from the start
 
 ```sh
 # install
