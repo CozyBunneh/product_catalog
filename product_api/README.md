@@ -93,6 +93,11 @@ liquibase \
 
 ### JVM
 
+Make sure the database is running
+```sh
+docker-compose -f docker-compose-db.yml up -d
+```
+
 ```sh
 ./gradlew bootRun
 ```
@@ -148,6 +153,8 @@ docker build -t products_native -f Dockerfile.native_build .
 
 ### Run image
 
+#### These steps will most likely fail since they cannot connect to the database in the cluster.
+
 Make sure the database is running
 ```sh
 docker-compose -f docker-compose-db.yml up -d
@@ -160,3 +167,8 @@ docker run -p 8080:8080 products_jvm
 # native
 docker run -p 8080:8080 products_native
 ```
+
+#### Instead
+- First build the project with `./gradlew clean build`
+- Then create the docker image `docker build -t products_jvm -f Dockerfile .`
+- And lastly run docker-compose `docker-compose up -d`

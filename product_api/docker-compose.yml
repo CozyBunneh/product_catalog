@@ -9,7 +9,7 @@ services:
       - "5432:5432"
 
   app:
-    image: simple-test_jvm:latest
+    image: product_jvm:latest
     depends_on:
       - db
     ports:
