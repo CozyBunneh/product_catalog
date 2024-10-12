@@ -123,7 +123,7 @@ public class ProductE2ETest {
         .expectBodyList(ProductV1.class)
         .value(products -> {
           assertThat(products, is(notNullValue()));
-          assertThat(products.size(), is(2));
+          assertThat(products.size(), is(22));
         });
   }
 
@@ -137,16 +137,16 @@ public class ProductE2ETest {
         .expectBodyList(ProductV1.class)
         .value(products -> {
           assertThat(products, is(notNullValue()));
-          assertThat(products.size(), is(2));
+          assertThat(products.size(), is(22));
 
           webTestClient.get()
-              .uri("/api/v1/products/" + products.get(0).id())
+              .uri("/api/v1/products/" + products.get(10).id())
               .exchange()
               .expectStatus().isOk()
               .expectBody(ProductV1.class)
               .value(product -> {
                 assertThat(product, is(notNullValue()));
-                assertThat(product.id(), is(products.get(0).id()));
+                assertThat(product.id(), is(products.get(10).id()));
                 assertThat(product.name(), is("name1"));
                 assertThat(product.category(), is("category1"));
                 assertThat(product.description(), is("description1"));
@@ -176,7 +176,7 @@ public class ProductE2ETest {
         .expectBodyList(ProductV1.class)
         .value(products -> {
           assertThat(products, is(notNullValue()));
-          assertThat(products.size(), is(2));
+          assertThat(products.size(), is(22));
 
           var product1 = products.get(0);
           var updatedProduct = new ProductV1(product1.id(), "name3", "category3", "description3", 3L, "imageUrl3");
@@ -209,7 +209,7 @@ public class ProductE2ETest {
         .expectBodyList(ProductV1.class)
         .value(products -> {
           assertThat(products, is(notNullValue()));
-          assertThat(products.size(), is(2));
+          assertThat(products.size(), is(22));
 
           webTestClient.delete()
               .uri("/api/v1/products/" + products.get(0).id())
