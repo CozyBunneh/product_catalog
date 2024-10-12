@@ -29,6 +29,10 @@ Then all of the configuration and such is needed
 ## Run
 
 ```sh
+# remember to install first
+npm i
+
+# start
 npm start
 ```
 

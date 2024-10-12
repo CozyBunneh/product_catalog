@@ -111,6 +111,7 @@ archlinux-java set java-22-graalvm-ee
 
 ```sh
 set -x JAVA_HOME /usr/lib/jvm/java-22-graalvm-ee/
+# sudo is needed if docker rootless isn't setup
 sudo -E ./gradlew nativeCompile
 
 # or
